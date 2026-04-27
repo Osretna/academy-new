@@ -1,0 +1,43 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128;
+    }
+
+    // Players
+    match /players/{playerId} {
+      allow read: if true; // Allow for demo purposes if searching by phone
+      allow create: if true; // Allow for demo registration
+      allow update, delete: if true; // Admin functionality
+    }
+
+    // Payments
+    match /payments/{paymentId} {
+      allow read: if true;
+      allow create: if true;
+    }
+
+    // Staff
+    match /staff/{staffId} {
+      allow read: if true;
+      allow write: if false; // Admin only
+    }
+    
+    // System metadata or test
+    match /_test_/connection {
+      allow read: if true;
+    }
+  }
+}

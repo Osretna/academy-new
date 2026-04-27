@@ -1,0 +1,6 @@
+{
+  "name": "Pro Academy Hub",
+  "description": "نظام متكامل لإدارة الأكاديميات الرياضية: اشتراكات، لاعبين، موارد بشرية، وتقارير مالية بتصميم احترافي.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}

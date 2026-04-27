@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-brand-primary: #22c55e; /* Green-500 */
+  --color-brand-secondary: #16a34a; /* Green-600 */
+  --color-dark-bg: #051405;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-white bg-dark-bg antialiased overflow-x-hidden;
+    background-color: var(--color-dark-bg);
+  }
+
+  /* Immersive Background Effects */
+  .bg-aura {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: 
+      radial-gradient(circle at 10% 20%, #1a3c1a 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, #0c250c 0%, transparent 50%);
+    filter: blur(80px);
+    opacity: 0.6;
+    z-index: -1;
+  }
+}
+
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-button {
+  @apply bg-brand-primary hover:bg-brand-primary/80 text-black font-bold transition-all duration-300 rounded-full px-6 py-2 flex items-center gap-2 shadow-lg shadow-brand-primary/20 cursor-pointer;
+}
+
+.glass-input {
+  @apply bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:outline-none backdrop-blur-md transition-all;
+}
+
+.sidebar-active {
+  @apply bg-white/10 text-white border border-white/10 shadow-xl;
+}
+
+/* Custom Scrollbar for Atmosphere */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.4);
+}

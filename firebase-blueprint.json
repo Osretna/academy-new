@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "Player": {
+      "title": "Player",
+      "description": "Athlete registered in the academy",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "birthDate": { "type": "string", "format": "date" },
+        "ageCategory": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "qrcode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Subscription payment history",
+      "type": "object",
+      "properties": {
+        "playerId": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "enum": ["Subscription", "Uniform", "Tournament"] },
+        "notes": { "type": "string" }
+      },
+      "required": ["playerId", "amount", "date"]
+    },
+    "Staff": {
+      "title": "Staff",
+      "description": "Academy employees and coaches",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["Coach", "Admin", "HR", "Finance"] },
+        "phone": { "type": "string" },
+        "salary": { "type": "number" },
+        "attendance": { "type": "array", "items": { "type": "string", "format": "date" } }
+      },
+      "required": ["name", "role"]
+    }
+  },
+  "firestore": {
+    "players": {
+      "schema": "Player",
+      "description": "Collection of all registered players"
+    },
+    "payments": {
+      "schema": "Payment",
+      "description": "Collection of all payment transactions"
+    },
+    "staff": {
+      "schema": "Staff",
+      "description": "Collection of academy staff members"
+    }
+  }
+}
