@@ -1,26 +1,16 @@
-# Instructions for GitHub Hosting
+# طريقة تشغيل الموقع تلقائياً عبر GitHub Actions 🚀
 
-This project is built using React + Vite. To host it on GitHub Pages or any other static host:
+لقد قمت بإعداد نظام "الأتمتة" لك، لكي يعمل الموقع بدون الحاجة لتصطيب أي برامج على جهازك.
 
-1. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+### الخطوات:
+1. **ارفع الملفات**: ارفع كل ملفات المشروع كما هي إلى مستودع (Repository) جديد على جيت هب.
+2. **شاهد السحر**: بمجرد الرفع، اذهب لتبويب **Actions** في صفحة الجيت هب الخاصة بك، ستجد أن جيت هب بدأ ببناء الموقع لك.
+3. **تفعيل الرابط**:
+   - بعد انتهاء الـ Action (سيظهر باللون الأخضر)، اذهب إلى **Settings** ثم **Pages**.
+   - تحت قسم **Build and deployment**، تأكد أن المصدر (Source) هو `Deploy from a branch`.
+   - اختر البرانش `gh-pages` واضغط **Save**.
 
-2. **Build the project**:
-   ```bash
-   npm run build
-   ```
+### ملاحظات هامة:
+- **حل مشكلة الصفحة البيضاء**: قمت بتعديل الكود لاستخدام `HashRouter` لضمان عمل الروابط بشكل صحيح على جيت هب.
+- **تلقائية بالكامل**: في كل مرة تعدل أي شيء وترفعه، سيقوم جيت هب بتحديث الرابط تلقائياً خلال دقيقة واحدة.
 
-3. **Deploy**:
-   - For GitHub Pages, you can use the `dist` folder.
-   - Note: This project uses Firebase. Ensure you have your `firebase-applet-config.json` correctly set up in the root or environment variables.
-
-4. **Environment Variables**:
-   In AI Studio, secrets are managed via the Secrets panel. If moving to GitHub, you need to add your `GEMINI_API_KEY` to your CI/CD secrets or a `.env` file.
-
-## Features
-- **Player Registration**: Camera support (requires HTTPS).
-- **QR Codes**: Auto-generated for each player.
-- **Dynamic Dashboard**: Animated stats.
-- **RTL Support**: Built specifically for Arabic language.
